@@ -1,0 +1,14 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ravenkod-validators-uy"
+version = "0.1.0"
+description = "???"
+readme = "Readme.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [
+{name="Agustin Lasalvia"}
+]

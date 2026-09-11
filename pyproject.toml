@@ -10,5 +10,7 @@ readme = "Readme.md"
 requires-python = ">=3.9"
 license = "MIT"
 authors = [
-{name="Agustin Lasalvia"}
+{name="Agustin lasalvia"}
 ]
+[project.optional-dependencies]
+test = ["pytest"]

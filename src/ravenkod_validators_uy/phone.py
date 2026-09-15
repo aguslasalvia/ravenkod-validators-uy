@@ -53,6 +53,15 @@ def is_uruguayan_number(phone_number: str) -> bool:
 
 
 def get_original_carrier(phone_number: str) -> str:
+    """
+    Looks up the original carrier a Uruguayan mobile number was assigned to,
+    based on its 2-digit prefix.
+
+    Accepts any format handled by `get_clean_number` (e.g. "099 123 456",
+    "+59899123456"). Returns the carrier name, or "Unknown" if the prefix
+    isn't mapped. Raises ValueError if the number isn't a valid Uruguayan
+    mobile number.
+    """
 
     if not is_uruguayan_number(phone_number):
         raise ValueError("Invalid phone number")

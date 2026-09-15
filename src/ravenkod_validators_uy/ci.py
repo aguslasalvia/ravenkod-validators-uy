@@ -1,4 +1,16 @@
 def validate(ci: str) -> bool:
+    """
+    Validates a Uruguayan Cedula de Identidad (CI) using its check digit.
+
+    Input: an 8-character string with 7 body digits plus 1 verification digit
+    (e.g. "12345678"). Returns True if the verification digit matches the one
+    computed from the body digits, False otherwise (including when the input
+    is not exactly 8 characters long).
+    """
+
+    if len(ci) != 8:
+        return False
+
     body, verified_digit = get_initial_ci_split(ci)
 
     digits: list = [int(char) for char in body]
@@ -13,9 +25,12 @@ def validate(ci: str) -> bool:
 
 def format(ci: str) -> str:
     """
-    Recieves an CI with no separations what so ever and returns a formated CI
-    Input: 12345678
-    Output: 1.234.567-8
+    Formats a Uruguayan CI, adding thousands separators and a dash before
+    the check digit.
+
+    Input: an 8-character string with no separators (e.g. "12345678").
+    Output: the same CI formatted as "1.234.567-8". Does not validate the
+    check digit; use `validate` first if that guarantee is needed.
     """
     body, verified_digit = get_initial_ci_split(ci)
 
@@ -27,4 +42,11 @@ def format(ci: str) -> str:
 
 
 def get_initial_ci_split(ci: str) -> tuple[str, int]:
+    """
+    Splits a raw CI string into its 7-digit body and its check digit.
+
+    Input: an 8-character string (e.g. "12345678").
+    Output: a tuple of ("1234567", 8). Does not validate length or that the
+    characters are digits; callers are expected to have checked that already.
+    """
     return ci[:7], int(ci[7:])
